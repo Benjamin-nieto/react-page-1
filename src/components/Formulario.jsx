@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Col, Row, Container, Card, Alert } from 'react-bootstrap';
+import { Form, Button, Col, Row, Container, Card, Alert, ListGroup } from 'react-bootstrap';
 
 const Formulario = () => {
 
@@ -8,7 +8,7 @@ const Formulario = () => {
     const inputLstName = React.useRef();
 
     //number variable for update
-    const [isUpdate,setIsUpdate] = React.useState();
+    const [isUpdate, setIsUpdate] = React.useState();
     // default value string to form btn
     const [btnTxt, setBtnTxt] = React.useState('Ingresar')
 
@@ -27,9 +27,9 @@ const Formulario = () => {
 
 
     const editar = (index) => {
-        
 
-        let nombre =  lista[index].name
+
+        let nombre = lista[index].name
         let apellido = lista[index].last_name
         inputName.current.value = nombre;
         inputLstName.current.value = apellido;
@@ -38,7 +38,7 @@ const Formulario = () => {
         setApellido(apellido)
         setIsUpdate(index)
 
-       // console.log('editar:'+index+' '+nombre+' '+apellido+'')
+        // console.log('editar:'+index+' '+nombre+' '+apellido+'')
     }
 
 
@@ -61,12 +61,12 @@ const Formulario = () => {
             window.setTimeout(() => {
                 setShow(false)
             }, 3000)
-       
+
         } else {
             //console.log(nombre.trim() + apellido.trim())
 
-            if(isUpdate!=null){
-                console.log('se actualizara '+e)
+            if (isUpdate != null) {
+                console.log('se actualizara ' + e)
 
                 lista[isUpdate].name = nombre
                 lista[isUpdate].last_name = apellido
@@ -76,19 +76,19 @@ const Formulario = () => {
                 setApellido('')
                 setIsUpdate(null)
                 setBtnTxt('Ingresar')
-            }else{
+            } else {
                 setLista([
                     ...lista, { name: nombre, last_name: apellido }
                 ])
                 e.target.reset()
                 setNombre('')
                 setApellido('')
-                
-    
+
+
             }
-          
+
         }
-      
+
 
     }
 
@@ -100,8 +100,8 @@ const Formulario = () => {
             <Card.Header className="cardForm">Formulario</Card.Header>
 
             <Container>
-                <Row>
-                    <Col lg={6} md={12}>
+                <Row className='rowTB'>
+                    <Col lg={6} md={12} className="header">
                         <Form onSubmit={guardarDatos} action="">
                             <Form.Group className="mb-3" controlId="formFieldName">
                                 <Form.Label className="Form-Label" >Nombre</Form.Label>
@@ -124,21 +124,17 @@ const Formulario = () => {
 
                     <Col lg={6} md={12}>
 
-                        <ul>
+                        <ListGroup>
                             {lista.map((element, index) => (
-
-                                <li key={index}>
+                                <ListGroup.Item key={index}>
                                     <Row>
                                         <Col lg={6} md={6}><p>{element.name} {element.last_name} </p></Col>
-                                        <Col lg={3} md={3}><Button style={{ width: '100%' }} variant="warning" onClick={() => editar(index)} >Editar</Button></Col>
-                                        <Col lg={3} md={3}><Button style={{ width: '100%' }} variant="danger" onClick={() => eliminar(index)} >Eliminar</Button></Col>
+                                        <Col lg={3} md={3} style={{paddingBottom: '5px'}} ><Button style={{ width: '100%' }} variant="warning" onClick={() => editar(index)} >Editar</Button></Col>
+                                        <Col lg={3} md={3} style={{paddingBottom: '5px'}} ><Button style={{ width: '100%' }} variant="danger" onClick={() => eliminar(index)} >Eliminar</Button></Col>
                                     </Row>
-                                </li>
-
+                                </ListGroup.Item>
                             ))}
-
-
-                        </ul>
+                        </ListGroup>
                     </Col>
 
                 </Row>

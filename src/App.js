@@ -7,14 +7,14 @@ import Formulario from './components/Formulario';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider, Row, Col, Container } from 'react-bootstrap';
 
-function App() {
-  return (
+  function App() {
+    return (
 
-    <ThemeProvider
-      breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
-      minBreakpoint="md">
+      <ThemeProvider
+        breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+        minBreakpoint="sm">
 
-      <Container>
+        <Container>
         <Row>
           <Col>
             <Formulario />

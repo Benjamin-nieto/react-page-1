@@ -44,7 +44,11 @@
 .Form-Label {
   font-family: monospace;
 }
-div.row {
+div.rowTB {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+div.header {
+  padding-bottom: 10px;
 }
